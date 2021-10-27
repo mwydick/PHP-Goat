@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <h1>Your Notes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="col-2">Title</th>
+                <th scope="col">Public</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <th scope="row"><a href="/user/{{user}}/note/{{note.note_id}}">{{ note.note_id }}</a></th>
+                <td class="col-2">{{ note.title }}</td>
+                <td>
+                {% if note.is_public %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="/user/{{user}}/note/new" role="button">New Note</a>
+{% endblock %}

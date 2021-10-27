@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if filtered_user %}
+        <h1>@{{filtered_user}}'s Public Notes</h1>
+    {% else %}
+        <h1>Public Notes</h1>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="col-2">Title</th>
+
+                {% if not filtered_user %}
+                  <th scope="col">Username</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <th scope="row"><a href="/public/{{note.username}}/note/{{note.note_id}}">{{ note.note_id }}</a></th>
+                <td class="col-2">{{ note.title }}</td>
+                {% if not filtered_user %}
+                    <td><a href="/public/{{note.username}}">@{{note.username}}</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

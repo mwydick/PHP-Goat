@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <h1>New Note</h1>
+
+    <form method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+      </div>
+
+      <div class="form-group">
+        <label for="note">Note</label>
+        <textarea class="form-control" id="note" placeholder="" name="note"></textarea>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="public">
+          Make Public
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}

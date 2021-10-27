@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <h1>
+      {{ note.title|default("<em>untitled</em>") }}
+      <small class="text-muted">#{{ note.note_id }}</small>
+
+      {% if note.is_public %}
+        <small class="text-right">[public]</small>
+      {% else %}
+        <small class="text-right">[private]</small>
+      {% endif %}
+    </h1>
+
+    <p class="lead mt-3">
+      {{ note.body|default("<em>this space intentionally left blank</em>") }}
+    </p>
+
+    <h2><a href="/public/{{ note.username }}">@{{ note.username }}</a></h2>
+
+{% endblock %}
